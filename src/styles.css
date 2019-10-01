@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  --mdc-theme-primary: rgb(255, 255, 255);
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  position: absolute;
+  font-family: sans-serif;
+  text-align: center;
+  height: 100vh;
+  width: 100vh;
+  left: 50%;
+  transform: translate(-50%);
+  /* outline: 1px solid pink; */
+}
+
+.scene {
+  position: absolute;
+  top: 14vh;
+  left: 16vh;
+  /* outline: 1px solid red; */
+}
+
+/* Control panel styles */
+.control-panel {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* outline: 1px solid red; */
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto 0 auto;
+  user-select: none;
+}
+#depth {
+  display: inline;
+  color: rgb(255, 255, 255);
+  font-weight: 300;
+  font-size: 0.8rem;
+  margin-left: 8px;
+  margin-right: 8px;
+  user-select: text;
+  /* outline: 1px solid red; */
+}
+
+/* Composition styles */
+.composition {
+  height: 68vh;
+}
+
+/* Caption styles */
+#github-logo {
+  position: absolute;
+  bottom: 4vh;
+  width: 48px;
+  left: 84vh;
+  transform: translate(-100%, 6%);
+}
+h1 {
+  font-size: 1.2rem;
+  line-height: 0;
+  color: white;
+}
+.primitivo {
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#caption {
+  position: absolute;
+  left: 16vh;
+  bottom: 4vh;
+}
+
+/* Screens adaptation */
+@media only screen and (orientation: portrait) {
+  .App {
+    height: 100vw;
+    width: 100vw;
+    /* outline: 1px solid pink; */
+  }
+
+  .scene {
+    top: 14vw;
+    left: 16vw;
+    /* outline: 1px solid red; */
+  }
+
+  .composition {
+    height: 68vw;
+  }
+
+  #github-logo {
+    bottom: 4vw;
+    left: 84vw;
+  }
+
+  #caption {
+    left: 16vw;
+    bottom: 4vw;
+  }
+}
+
+@media only screen and (max-height: 820px) and (min-height: 480px),
+  (max-width: 590px) and (min-width: 480px) {
+  h1 {
+    font-size: 0.8rem;
+  }
+  #github-logo {
+    width: 36px;
+    transform: translate(-100%, 28%);
+  }
+  #depth {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-height: 480px), (max-width: 480px) {
+  h1 {
+    font-size: 0.6rem;
+  }
+  #github-logo {
+    width: 32px;
+    transform: translate(-100%, 28%);
+  }
+  #depth {
+    font-size: 0.6rem;
+  }
+}
