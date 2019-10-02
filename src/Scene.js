@@ -24,8 +24,8 @@ function Scene(props) {
       <TransitionEffect
         x={50}
         y={50}
-        centerX={200}
-        centerY={200}
+        centerX={250}
+        centerY={100}
         compositionWidth={500}
         compositionHeight={500}
         width={300}

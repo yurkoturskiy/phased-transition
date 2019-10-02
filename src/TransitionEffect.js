@@ -270,13 +270,10 @@ var roundFirstGroup = ({
     (prevPhaseGeneralScopeProgression - progression) /
     (prevPhaseGeneralScopeProgression -
       progressionsGeneralScope[activePhaseIndex][prevIndex]);
-  console.log("vertex", vertex.index);
-  console.log(
-    "progression general scope prev phase",
-    progressionsGeneralScope[activePhaseIndex - 1][vertex.index]
-  );
+
   let firstArm = 1 - firstFactor;
   if (firstArm < 0) firstArm = 0;
+  else if (firstArm > 1) firstArm = 0;
 
   let secondFactor =
     (prevPhaseGeneralScopeProgression - progression) /
@@ -397,7 +394,7 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          begin="200ms"
+          begin="100ms"
           repeatCount="indefinite"
           values={phasesOutput.dValues}
         />
@@ -408,6 +405,7 @@ function TransitionEffect(props) {
         d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="3"
         stroke="white"
+        fill="white"
       >
         <animate
           calcMode="spline"
@@ -415,7 +413,7 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          begin="500ms"
+          begin="200ms"
           repeatCount="indefinite"
           values={phasesOutput.dValues}
         />
