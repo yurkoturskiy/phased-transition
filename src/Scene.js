@@ -3,6 +3,7 @@ import { morphing, spacing } from "primitivo-svg";
 // Local components
 import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
+import TransitionEffect from "./TransitionEffect";
 import useDebounce from "./misc/useDebounce";
 
 function Scene(props) {
@@ -20,6 +21,7 @@ function Scene(props) {
     <div className="scene">
       <ControlPanel depth={depth} updateDepth={updateDepth} />
       <Composition depth={depth} />
+      <TransitionEffect centerX={100} centerY={100} width={400} height={400} />
     </div>
   );
 }
