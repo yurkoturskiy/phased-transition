@@ -264,13 +264,24 @@ var roundFirstGroup = ({
   const { vertexes } = endPath;
   const prevIndex = vertex.index === 0 ? vertexes.length - 2 : vertex.index - 1;
   const nextIndex = vertex.index === vertexes.length - 1 ? 1 : vertex.index + 1;
+  let prevPhaseGeneralScopeProgression =
+    progressionsGeneralScope[activePhaseIndex - 1][vertex.index];
   let firstFactor =
-    progression / progressionsGeneralScope[activePhaseIndex][prevIndex];
+    (prevPhaseGeneralScopeProgression - progression) /
+    (prevPhaseGeneralScopeProgression -
+      progressionsGeneralScope[activePhaseIndex][prevIndex]);
+  console.log("vertex", vertex.index);
+  console.log(
+    "progression general scope prev phase",
+    progressionsGeneralScope[activePhaseIndex - 1][vertex.index]
+  );
   let firstArm = 1 - firstFactor;
   if (firstArm < 0) firstArm = 0;
 
   let secondFactor =
-    progression / progressionsGeneralScope[activePhaseIndex][nextIndex];
+    (prevPhaseGeneralScopeProgression - progression) /
+    (prevPhaseGeneralScopeProgression -
+      progressionsGeneralScope[activePhaseIndex][nextIndex]);
   let secondArm = 1 - secondFactor;
   if (secondArm < 0) secondArm = 0;
   let result = [firstArm, secondArm];
@@ -320,8 +331,8 @@ const phaseThree = {
 function TransitionEffect(props) {
   const baseParameters = {
     numOfSegments: 4,
-    x: 0,
-    y: 0,
+    x: props.x,
+    y: props.y,
     width: props.width,
     height: props.height,
     centerX: props.centerX,
@@ -352,15 +363,15 @@ function TransitionEffect(props) {
 
   return (
     <svg
-      width={props.width}
-      height={props.height}
+      width={props.compositionWidth}
+      height={props.compositionHeight}
       className="transition-effect"
     >
       <path
         id="transition-stroke-one"
         d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="32"
-        stroke="#3688FF"
+        strokeWidth="1"
+        stroke="white"
         fillOpacity="0"
       >
         <animate
@@ -369,16 +380,16 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          repeatCount="1"
+          repeatCount="indefinite"
           values={phasesOutput.dValues}
         />
       </path>
       <path
         id="transition-stroke-two"
         d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="32"
+        strokeWidth="2"
         fillOpacity="0"
-        stroke="#22D163"
+        stroke="white"
       >
         <animate
           calcMode="spline"
@@ -386,8 +397,8 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          begin="110ms"
-          repeatCount="1"
+          begin="200ms"
+          repeatCount="indefinite"
           values={phasesOutput.dValues}
         />
       </path>
@@ -395,9 +406,8 @@ function TransitionEffect(props) {
       <path
         id="transition-stroke-three"
         d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="64"
-        fill="white"
-        stroke="#FF546C"
+        strokeWidth="3"
+        stroke="white"
       >
         <animate
           calcMode="spline"
@@ -405,21 +415,8 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          begin="250ms"
-          repeatCount="1"
-          values={phasesOutput.dValues}
-        />
-      </path>
-
-      <path d={endPathIsActive ? endShape.d : undefined} fill="white">
-        <animate
-          calcMode="spline"
-          keyTimes={ts.keyTimes}
-          keySplines={ts.keySplines}
-          attributeName="d"
-          dur="1500ms"
-          begin="250ms"
-          repeatCount="5"
+          begin="500ms"
+          repeatCount="indefinite"
           values={phasesOutput.dValues}
         />
       </path>

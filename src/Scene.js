@@ -21,7 +21,16 @@ function Scene(props) {
     <div className="scene">
       <ControlPanel depth={depth} updateDepth={updateDepth} />
       <Composition depth={depth} />
-      <TransitionEffect centerX={100} centerY={100} width={400} height={400} />
+      <TransitionEffect
+        x={50}
+        y={50}
+        centerX={200}
+        centerY={200}
+        compositionWidth={500}
+        compositionHeight={500}
+        width={300}
+        height={300}
+      />
     </div>
   );
 }
