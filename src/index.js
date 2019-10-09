@@ -15,7 +15,7 @@ function App() {
       <a href="https://github.com/guandjoy/phased-transition">
         <GitHubLogo />
       </a>
-      <Caption topic="Noise of distance" />
+      <Caption topic="Phased transition" />
     </div>
   );
 }
