@@ -20,7 +20,6 @@ function Scene(props) {
   return (
     <div className="scene">
       <ControlPanel depth={depth} updateDepth={updateDepth} />
-      <Composition depth={depth} />
       <TransitionEffect
         depth={depth}
         x={50}

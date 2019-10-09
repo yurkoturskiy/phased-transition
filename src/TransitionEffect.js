@@ -363,7 +363,7 @@ function TransitionEffect(props) {
     <svg
       width={props.compositionWidth}
       height={props.compositionHeight}
-      className="transition-effect"
+      className="composition"
     >
       <path
         id="transition-stroke-one"
