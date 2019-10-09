@@ -7,7 +7,7 @@ import TransitionEffect from "./TransitionEffect";
 import useDebounce from "./misc/useDebounce";
 
 function Scene(props) {
-  const [depth, setDepth] = useState(1);
+  const [depth, setDepth] = useState(0);
   // const debouncedDepth = useDebounce(depth, depth * 200);
   const updateDepth = factor => {
     setDepth(depth => {
@@ -22,6 +22,7 @@ function Scene(props) {
       <ControlPanel depth={depth} updateDepth={updateDepth} />
       <Composition depth={depth} />
       <TransitionEffect
+        depth={depth}
         x={50}
         y={50}
         centerX={250}

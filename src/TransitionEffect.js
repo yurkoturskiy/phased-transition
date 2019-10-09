@@ -328,6 +328,7 @@ const phaseThree = {
 function TransitionEffect(props) {
   const baseParameters = {
     numOfSegments: 4,
+    depth: props.depth,
     x: props.x,
     y: props.y,
     width: props.width,
