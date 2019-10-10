@@ -13,7 +13,7 @@ function Scene(props) {
     setDepth(depth => {
       let result = depth + factor;
       // Limit number of segment
-      return result < 0 || result > 9 ? depth : result;
+      return result < 0 || result > 5 ? depth : result;
     });
   };
 

@@ -17,7 +17,7 @@ function ControlPanel({ depth, updateDepth }) {
       <Button
         id="increase"
         dense={true}
-        disabled={depth === 9}
+        disabled={depth === 5}
         className="material-button"
         onClick={() => updateDepth(+1)}
       >
