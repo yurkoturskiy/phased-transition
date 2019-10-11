@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { morphing, spacing } from "primitivo-svg";
 // Local components
 import ControlPanel from "./ControlPanel";
@@ -7,7 +7,22 @@ import TransitionEffect from "./TransitionEffect";
 import useDebounce from "./misc/useDebounce";
 
 function Scene(props) {
+  const [effectsData, setEffectsData] = useState([]);
+  const [compositionSize, setCompositionSize] = useState(
+    (Math.min(window.innerHeight, window.innerWidth) / 100) * 68
+  );
+  const resizeHandler = () => {
+    setCompositionSize(
+      (Math.min(window.innerHeight, window.innerWidth) / 100) * 68
+    );
+  };
+  useEffect(() => {
+    window.addEventListener("resize", resizeHandler);
+    return () => window.removeEventListener("resize", resizeHandler);
+  }, []);
   const [depth, setDepth] = useState(0);
+  const [centerX, setCenterX] = useState(100);
+  const [centerY, setCenterY] = useState(100);
   // const debouncedDepth = useDebounce(depth, depth * 200);
   const updateDepth = factor => {
     setDepth(depth => {
@@ -17,20 +32,62 @@ function Scene(props) {
     });
   };
 
+  const interactiveArea = useRef();
+  const sceneRef = useRef();
+  const handleClick = e => {
+    var offsets = interactiveArea.current.getBoundingClientRect();
+    let clickX = e.clientX - offsets.left;
+    let clickY = e.clientY - offsets.top;
+    setCenterX(clickX);
+    setCenterY(clickY);
+    var data = {};
+    data.centerX = clickX;
+    data.centerY = clickY;
+    data.depth = depth;
+    data.active = true;
+    setEffectsData(effectsData => {
+      effectsData.push(data);
+      data.index = effectsData.length - 1;
+      return effectsData;
+    });
+    setTimeout(() => {
+      setEffectsData(effectsData => {
+        effectsData[data.index].active = false;
+        return effectsData;
+      });
+    }, 2000);
+  };
+  console.log("effects data", effectsData);
+  const effects = effectsData.map((data, index) => {
+    if (data.active) {
+      return (
+        <TransitionEffect
+          key={index}
+          depth={data.depth}
+          x={0}
+          y={0}
+          centerX={data.centerX}
+          centerY={data.centerY}
+          compositionWidth={compositionSize}
+          compositionHeight={compositionSize}
+          width={compositionSize}
+          height={compositionSize}
+        />
+      );
+    } else {
+      return null;
+    }
+  });
+
   return (
-    <div className="scene">
+    <div className="scene" ref={sceneRef}>
       <ControlPanel depth={depth} updateDepth={updateDepth} />
-      <TransitionEffect
-        depth={depth}
-        x={50}
-        y={50}
-        centerX={250}
-        centerY={100}
-        compositionWidth={500}
-        compositionHeight={500}
-        width={300}
-        height={300}
+      <div
+        className="interactive-area"
+        ref={interactiveArea}
+        onClick={e => handleClick(e)}
       />
+      {effects.length && effects}
     </div>
   );
 }

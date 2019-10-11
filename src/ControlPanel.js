@@ -23,6 +23,7 @@ function ControlPanel({ depth, updateDepth }) {
       >
         +
       </Button>
+      <label>Depth</label>
     </div>
   );
 }

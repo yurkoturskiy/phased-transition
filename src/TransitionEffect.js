@@ -279,8 +279,10 @@ var roundFirstGroup = ({
     (prevPhaseGeneralScopeProgression - progression) /
     (prevPhaseGeneralScopeProgression -
       progressionsGeneralScope[activePhaseIndex][nextIndex]);
+
   let secondArm = 1 - secondFactor;
   if (secondArm < 0) secondArm = 0;
+  else if (secondArm > 1) secondArm = 0;
   let result = [firstArm, secondArm];
   return result;
 };
@@ -367,7 +369,7 @@ function TransitionEffect(props) {
     >
       <path
         id="transition-stroke-one"
-        d={endPathIsActive ? endShape.d : undefined}
+        // d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="1"
         stroke="white"
         fillOpacity="0"
@@ -378,13 +380,13 @@ function TransitionEffect(props) {
           keySplines={ts.keySplines}
           attributeName="d"
           dur="1500ms"
-          repeatCount="indefinite"
+          repeatCount="1"
           values={phasesOutput.dValues}
         />
       </path>
       <path
         id="transition-stroke-two"
-        d={endPathIsActive ? endShape.d : undefined}
+        // d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="2"
         fillOpacity="0"
         stroke="white"
@@ -396,17 +398,16 @@ function TransitionEffect(props) {
           attributeName="d"
           dur="1500ms"
           begin="100ms"
-          repeatCount="indefinite"
+          repeatCount="1"
           values={phasesOutput.dValues}
         />
       </path>
 
       <path
         id="transition-stroke-three"
-        d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="3"
         stroke="white"
-        fill="white"
+        fill="transparent"
       >
         <animate
           calcMode="spline"
@@ -415,7 +416,7 @@ function TransitionEffect(props) {
           attributeName="d"
           dur="1500ms"
           begin="200ms"
-          repeatCount="indefinite"
+          repeatCount="1"
           values={phasesOutput.dValues}
         />
       </path>
