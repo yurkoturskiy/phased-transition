@@ -81,13 +81,15 @@ function Scene(props) {
 
   return (
     <div className="scene" ref={sceneRef}>
+      <div className="composition-wrapper">
+        <div
+          className="interactive-area"
+          ref={interactiveArea}
+          onClick={e => handleClick(e)}
+        />
+        {effects.length && effects}
+      </div>
       <ControlPanel depth={depth} updateDepth={updateDepth} />
-      <div
-        className="interactive-area"
-        ref={interactiveArea}
-        onClick={e => handleClick(e)}
-      />
-      {effects.length && effects}
     </div>
   );
 }

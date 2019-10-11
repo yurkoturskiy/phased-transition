@@ -67,6 +67,11 @@ body {
 }
 
 /* Composition styles */
+.composition-wrapper {
+  position: relative;
+  height: 68vh;
+  width: 68vh;
+}
 .composition {
   position: absolute;
   top: 0;
@@ -118,6 +123,10 @@ a {
   }
 
   .interactive-area {
+    height: 68vw;
+    width: 68vw;
+  }
+  .composition-wrapper {
     height: 68vw;
     width: 68vw;
   }
