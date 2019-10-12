@@ -82,6 +82,17 @@ body {
 .transition-path {
   stroke: white;
   fill: transparent;
+  animation-name: fade-out;
+  animation-duration: 1.7s;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Caption styles */
