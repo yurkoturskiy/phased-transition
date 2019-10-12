@@ -369,10 +369,9 @@ function TransitionEffect(props) {
     >
       <path
         id="transition-stroke-one"
+        className="transition-path"
         // d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="1"
-        stroke="white"
-        fillOpacity="0"
+        strokeWidth="2"
       >
         <animate
           calcMode="spline"
@@ -386,10 +385,9 @@ function TransitionEffect(props) {
       </path>
       <path
         id="transition-stroke-two"
+        className="transition-path"
         // d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="2"
-        fillOpacity="0"
-        stroke="white"
       >
         <animate
           calcMode="spline"
@@ -405,9 +403,8 @@ function TransitionEffect(props) {
 
       <path
         id="transition-stroke-three"
-        strokeWidth="3"
-        stroke="white"
-        fill="transparent"
+        className="transition-path"
+        strokeWidth="2"
       >
         <animate
           calcMode="spline"

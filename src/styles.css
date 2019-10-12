@@ -79,6 +79,10 @@ body {
   height: 68vh;
   user-select: none;
 }
+.transition-path {
+  stroke: white;
+  fill: transparent;
+}
 
 /* Caption styles */
 #github-logo {
