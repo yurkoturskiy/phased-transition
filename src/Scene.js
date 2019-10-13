@@ -35,6 +35,7 @@ function Scene(props) {
   const interactiveArea = useRef();
   const sceneRef = useRef();
   const handleClick = e => {
+    e.preventDefault();
     var offsets = interactiveArea.current.getBoundingClientRect();
     let clickX = e.clientX - offsets.left;
     let clickY = e.clientY - offsets.top;
@@ -89,6 +90,8 @@ function Scene(props) {
         />
         {effects.length && effects}
       </div>
+      <div className="square-option" />
+      <div className="circle-option" />
       <ControlPanel depth={depth} updateDepth={updateDepth} />
     </div>
   );

@@ -378,7 +378,7 @@ function TransitionEffect(props) {
           keyTimes={ts.keyTimes}
           keySplines={ts.keySplines}
           attributeName="d"
-          dur="1500ms"
+          dur="1300ms"
           repeatCount="1"
           values={phasesOutput.dValues}
         />
@@ -394,7 +394,7 @@ function TransitionEffect(props) {
           keyTimes={ts.keyTimes}
           keySplines={ts.keySplines}
           attributeName="d"
-          dur="1500ms"
+          dur="1300ms"
           begin="100ms"
           repeatCount="1"
           values={phasesOutput.dValues}
@@ -411,8 +411,8 @@ function TransitionEffect(props) {
           keyTimes={ts.keyTimes}
           keySplines={ts.keySplines}
           attributeName="d"
-          dur="1500ms"
-          begin="200ms"
+          dur="1300ms"
+          begin="210ms"
           repeatCount="1"
           values={phasesOutput.dValues}
         />

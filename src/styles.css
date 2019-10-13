@@ -10,6 +10,7 @@ body {
   background-color: black;
   margin: 0;
   padding: 0;
+  touch-action: manipulation;
 }
 
 .App {
@@ -34,7 +35,10 @@ body {
   z-index: 2;
   position: absolute;
   user-select: none;
-  outline: 1px solid pink;
+  /* border-radius: 68vh; */
+  box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
+    0px 0px 20px -10px rgba(255, 255, 255, 0.3);
+  opacity: 1;
   height: 68vh;
   width: 68vh;
 }
@@ -45,7 +49,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   bottom: -32px;
   left: 0;
   right: 0;
@@ -61,6 +65,28 @@ body {
   margin-right: 8px;
   user-select: text;
   /* outline: 1px solid red; */
+}
+.square-option,
+.circle-option {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0 auto 0;
+  border: 1px solid white;
+  color: white;
+}
+.square-option {
+  left: -8vh;
+  width: 6vh;
+  height: 6vh;
+  transform: translate(-50%);
+}
+.circle-option {
+  right: -8vh;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 9vh;
+  transform: translate(50%);
 }
 .control-panel label {
   color: white;
@@ -82,8 +108,13 @@ body {
 .transition-path {
   stroke: white;
   fill: transparent;
+  opacity: 0;
   animation-name: fade-out;
-  animation-duration: 1.7s;
+  animation-duration: 1.51s;
+  animation-timing-function: cubic-bezier(0.15, 0, 0.5, 0.6);
+}
+#transition-stroke-three {
+  fill: white;
 }
 
 @keyframes fade-out {
@@ -136,7 +167,17 @@ a {
     left: 16vw;
     /* outline: 1px solid red; */
   }
-
+  .square-option {
+    left: -8vw;
+    width: 6vw;
+    height: 6vw;
+  }
+  .circle-option {
+    right: -8vw;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 9vw;
+  }
   .interactive-area {
     height: 68vw;
     width: 68vw;
