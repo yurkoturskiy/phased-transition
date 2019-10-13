@@ -23,6 +23,7 @@ function Scene(props) {
   const [depth, setDepth] = useState(0);
   const [centerX, setCenterX] = useState(100);
   const [centerY, setCenterY] = useState(100);
+  const [numOfClicks, setNumOfClicks] = useState(0);
   // const debouncedDepth = useDebounce(depth, depth * 200);
   const updateDepth = factor => {
     setDepth(depth => {
@@ -51,6 +52,7 @@ function Scene(props) {
       data.index = effectsData.length - 1;
       return effectsData;
     });
+    setNumOfClicks(numOfClicks => numOfClicks + 1);
     setTimeout(() => {
       setEffectsData(effectsData => {
         effectsData[data.index].active = false;
@@ -58,7 +60,7 @@ function Scene(props) {
       });
     }, 2000);
   };
-  console.log("effects data", effectsData);
+
   const effects = effectsData.map((data, index) => {
     if (data.active) {
       return (
