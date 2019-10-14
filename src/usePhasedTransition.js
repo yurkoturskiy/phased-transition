@@ -5,41 +5,54 @@ function usePhasedTransition(props) {
   const phaseOneRatio = 3;
   const phaseTwoRatio = 2;
 
-  const startGroupsParameters = [
-    {
-      incircle: props.incircle,
-      radius: 2,
-      round: 1,
-      adaptArms: true,
-      smartRound: true
-    },
-    {
+  const getStartGroupsParameters = () => {
+    let groups = [];
+    for (let i = 0; i < props.numOfGroups - 1; i++) {
+      groups.push({
+        incircle: props.incircle,
+        type: props.incircle ? "radial" : "linear",
+        radius: 2,
+        round: 1,
+        adaptArms: true,
+        smartRound: true
+      });
+    }
+    groups.push({
       incircle: props.incircle,
       type: props.incircle ? "radial" : "linear",
       radius: 2,
       round: 1,
       adaptArms: true,
       smartRound: true
-    }
-  ];
+    });
+    return groups;
+  };
 
-  const endGroupsParameters = [
-    {
-      incircle: props.incircle,
-      distance: 1,
-      round: props.incircle ? 1 : 0,
-      adaptArms: !props.incircle,
-      lengthBasedRound: true
-    },
-    {
+  const getEndGroupsParameters = () => {
+    let groups = [];
+    for (let i = 0; i < props.numOfGroups - 1; i++) {
+      groups.push({
+        incircle: props.incircle,
+        type: props.incircle ? "radial" : "linear",
+        distance: 1,
+        round: props.incircle ? 1 : 0,
+        adaptArms: !props.incircle,
+        lengthBasedRound: true
+      });
+    }
+    groups.push({
       incircle: props.incircle,
       type: props.incircle ? "radial" : "linear",
       distance: 1,
       round: 1,
       adaptArms: false,
       lengthBasedRound: true
-    }
-  ];
+    });
+    return groups;
+  };
+
+  const startGroupsParameters = getStartGroupsParameters();
+  const endGroupsParameters = getEndGroupsParameters();
 
   ///////////////
   // Phase one //
@@ -72,28 +85,34 @@ function usePhasedTransition(props) {
     return maxLength * progression;
   };
 
-  const phaseOne = {
-    duration: phaseOneDuration,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: [
-      {
+  const getPhaseOneGroupsParameters = () => {
+    let groups = [];
+    for (let i = 0; i < props.numOfGroups - 1; i++) {
+      groups.push({
         incircle: () => props.incircle,
         type: () => "radial",
         radius: phaseOneRadius,
         round: () => 1,
         adaptArms: () => true,
         smartRound: () => true
-      },
-      {
-        incircle: () => props.incircle,
-        type: () => (props.incircle ? "radial" : "linear"),
-        radius: phaseOneRadius,
-        round: () => 1,
-        adaptArms: () => true,
-        smartRound: () => true
-      }
-    ]
+      });
+    }
+    groups.push({
+      incircle: () => props.incircle,
+      type: () => (props.incircle ? "radial" : "linear"),
+      radius: phaseOneRadius,
+      round: () => 1,
+      adaptArms: () => true,
+      smartRound: () => true
+    });
+    return groups;
+  };
+
+  const phaseOne = {
+    duration: phaseOneDuration,
+    progressionsPhaseScope,
+    progressionsGeneralScope,
+    groupsParameters: getPhaseOneGroupsParameters()
   };
 
   ///////////////
@@ -160,28 +179,34 @@ function usePhasedTransition(props) {
     return result / 2;
   };
 
-  const phaseTwo = {
-    duration,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: [
-      {
+  const getPhaseTwoGroupsParameters = () => {
+    let groups = [];
+    for (let i = 0; i < props.numOfGroups - 1; i++) {
+      groups.push({
         incircle: () => props.incircle,
-        type: () => "radial",
+        type: () => (props.incircle ? "radial" : "linear"),
         radius: radiusFirstGroup,
         adaptArms: () => true,
         round: () => 1,
         lengthBasedRound: () => true
-      },
-      {
-        incircle: () => props.incircle,
-        type: () => (props.incircle ? "radial" : "linear"),
-        radius: radiusSecondGroup,
-        adaptArms: () => false,
-        round: () => 1,
-        lengthBasedRound: () => true
-      }
-    ]
+      });
+    }
+    groups.push({
+      incircle: () => props.incircle,
+      type: () => (props.incircle ? "radial" : "linear"),
+      radius: radiusSecondGroup,
+      adaptArms: () => false,
+      round: () => 1,
+      lengthBasedRound: () => true
+    });
+    return groups;
+  };
+
+  const phaseTwo = {
+    duration,
+    progressionsPhaseScope,
+    progressionsGeneralScope,
+    groupsParameters: getPhaseTwoGroupsParameters()
   };
 
   /////////////////
@@ -306,28 +331,34 @@ function usePhasedTransition(props) {
     return result;
   };
 
-  const phaseThree = {
-    duration: () => 0.5,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: [
-      {
+  const getPhaseThreeGroupsParameters = () => {
+    let groups = [];
+    for (let i = 0; i < props.numOfGroups - 1; i++) {
+      groups.push({
         incircle: () => props.incircle,
-        type: () => "radial",
+        type: () => (props.incircle ? "radial" : "linear"),
         radius: ({ vertex }) => vertex.length,
         adaptArms: () => !props.incircle,
         round: roundFirstGroup,
         lengthBasedRound: () => true
-      },
-      {
-        incircle: () => props.incircle,
-        type: () => (props.incircle ? "radial" : "linear"),
-        radius: radiusSecondGroup,
-        adaptArms: () => false,
-        round: () => 1,
-        lengthBasedRound: () => true
-      }
-    ]
+      });
+    }
+    groups.push({
+      incircle: () => props.incircle,
+      type: () => (props.incircle ? "radial" : "linear"),
+      radius: radiusSecondGroup,
+      adaptArms: () => false,
+      round: () => 1,
+      lengthBasedRound: () => true
+    });
+    return groups;
+  };
+
+  const phaseThree = {
+    duration: () => 0.5,
+    progressionsPhaseScope,
+    progressionsGeneralScope,
+    groupsParameters: getPhaseThreeGroupsParameters()
   };
   const rotate = useMemo(() => (props.incircle ? randomRange(0, 90) : 45), [
     props.incircle

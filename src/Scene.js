@@ -78,7 +78,7 @@ function Scene(props) {
           height={compositionSize}
           incircle={incircle}
           numOfGroups={2}
-          numOfSegments={3}
+          numOfSegments={4}
           className={incircle ? "composition circle" : "composition"}
         />
       );
