@@ -3,7 +3,6 @@ import { morphing, spacing } from "primitivo-svg";
 // Local components
 import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
-import TransitionEffect from "./TransitionEffect";
 import useDebounce from "./misc/useDebounce";
 
 function Scene(props) {
@@ -66,7 +65,7 @@ function Scene(props) {
   const effects = effectsData.map((data, index) => {
     if (data.active) {
       return (
-        <TransitionEffect
+        <Composition
           key={index}
           depth={data.depth}
           x={0}
@@ -78,6 +77,8 @@ function Scene(props) {
           width={compositionSize}
           height={compositionSize}
           incircle={incircle}
+          numOfGroups={2}
+          numOfSegments={3}
           className={incircle ? "composition circle" : "composition"}
         />
       );

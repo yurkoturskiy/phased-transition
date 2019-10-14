@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect, useMemo } from "react";
 import { morphing, spacing, path, phases, randomRange } from "primitivo-svg";
 
-function TransitionEffect(props) {
+function usePhasedTransition(props) {
   const phaseOneRatio = 3;
   const phaseTwoRatio = 2;
 
@@ -334,7 +333,7 @@ function TransitionEffect(props) {
     props.incircle
   ]);
   const baseParameters = {
-    numOfSegments: 3,
+    numOfSegments: props.numOfSegments,
     depth: props.depth,
     x: props.x,
     y: props.y,
@@ -342,7 +341,8 @@ function TransitionEffect(props) {
     height: props.height,
     centerX: props.centerX,
     centerY: props.centerY,
-    rotate: rotate
+    rotate: rotate,
+    numOfGroups: props.numOfGroups
   };
 
   const phasesOutput = phases({
@@ -353,84 +353,7 @@ function TransitionEffect(props) {
     phases: [{ ...phaseOne }, { ...phaseTwo }, { ...phaseThree }]
   });
 
-  const ts = spacing({
-    progression: phasesOutput.progressions,
-    keySplines: "0.75, 0, 0.25, 1"
-  });
-
-  const endShape = path({ ...baseParameters, groups: endGroupsParameters });
-
-  const [endPathIsActive, setEndPathIsActive] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setEndPathIsActive(true), 1400);
-  }, []);
-
-  return (
-    <svg
-      width={props.compositionWidth}
-      height={props.compositionHeight}
-      className={props.className}
-    >
-      <path
-        id="transition-stroke-one"
-        className="transition-path"
-        // d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="2"
-      >
-        <animate
-          calcMode="spline"
-          keyTimes={ts.keyTimes}
-          keySplines={ts.keySplines}
-          attributeName="d"
-          dur="1300ms"
-          repeatCount="1"
-          values={phasesOutput.dValues}
-        />
-      </path>
-      <path
-        id="transition-stroke-two"
-        className="transition-path"
-        // d={endPathIsActive ? endShape.d : undefined}
-        strokeWidth="2"
-      >
-        <animate
-          calcMode="spline"
-          keyTimes={ts.keyTimes}
-          keySplines={ts.keySplines}
-          attributeName="d"
-          dur="1300ms"
-          begin="100ms"
-          repeatCount="1"
-          values={phasesOutput.dValues}
-        />
-      </path>
-
-      <path
-        id="transition-stroke-three"
-        className="transition-path"
-        strokeWidth="2"
-      >
-        <animate
-          calcMode="spline"
-          keyTimes={ts.keyTimes}
-          keySplines={ts.keySplines}
-          attributeName="d"
-          dur="1300ms"
-          begin="210ms"
-          repeatCount="1"
-          values={phasesOutput.dValues}
-        />
-      </path>
-    </svg>
-  );
+  return phasesOutput;
 }
 
-TransitionEffect.propTypes = {
-  centerX: PropTypes.number,
-  centerY: PropTypes.number,
-  width: PropTypes.number,
-  height: PropTypes.number
-};
-
-export default TransitionEffect;
+export default usePhasedTransition;
