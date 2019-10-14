@@ -35,12 +35,55 @@ body {
   z-index: 2;
   position: absolute;
   user-select: none;
-  /* border-radius: 68vh; */
+  transition: box-shadow 0.5s, border-radius 0.5s;
   box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
     0px 0px 20px -10px rgba(255, 255, 255, 0.3);
   opacity: 1;
   height: 68vh;
   width: 68vh;
+
+  animation-name: light-up;
+  animation-duration: 3.6s;
+  animation-delay: 0.7s;
+}
+
+.square {
+  border-radius: 0;
+}
+.circle {
+  border-radius: 100%;
+}
+
+.illumination {
+}
+
+.transition {
+  box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
+    0px 0px 20px -10px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 24px 0px rgba(255, 255, 255, 0.2),
+    inset 0px 0px 512px 128px rgba(255, 255, 255, 0.05),
+    inset 0px 0px 4px 0px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes light-up {
+  0% {
+    box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
+      0px 0px 20px -10px rgba(255, 255, 255, 0.3),
+      inset 0px 0px 0px -9px rgba(255, 255, 255, 0) inset 0px 0px 6px 0px rgba(255, 255, 255, 0);
+  }
+  35% {
+    box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
+      0px 0px 20px -10px rgba(255, 255, 255, 0.3),
+      inset 0px 0px 24px 0px rgba(255, 255, 255, 0.2),
+      inset 0px 0px 512px 128px rgba(255, 255, 255, 0.05),
+      inset 0px 0px 4px 0px rgba(255, 255, 255, 0.1);
+  }
+  70% {
+    box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
+      0px 0px 20px -10px rgba(255, 255, 255, 0.3),
+      inset 0px 0px 0px -9px rgba(255, 255, 255, 0),
+      inset 0px 0px 6px 0px rgba(255, 255, 255, 0);
+  }
 }
 
 /* Control panel styles */
@@ -100,6 +143,7 @@ body {
 }
 .composition {
   position: absolute;
+  transition: border-radius 0.5s;
   top: 0;
   left: 0;
   height: 68vh;

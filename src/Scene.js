@@ -20,6 +20,8 @@ function Scene(props) {
     window.addEventListener("resize", resizeHandler);
     return () => window.removeEventListener("resize", resizeHandler);
   }, []);
+  const [incircle, setIncircle] = useState(false);
+  const [transition, setTransition] = useState(false);
   const [depth, setDepth] = useState(0);
   const [centerX, setCenterX] = useState(100);
   const [centerY, setCenterY] = useState(100);
@@ -75,6 +77,7 @@ function Scene(props) {
           compositionHeight={compositionSize}
           width={compositionSize}
           height={compositionSize}
+          className={incircle ? "composition circle" : "composition"}
         />
       );
     } else {
@@ -82,18 +85,44 @@ function Scene(props) {
     }
   });
 
+  const getInteractiveAreaStyles = () => {
+    let styles = ["interactive-area"];
+    incircle ? styles.push("circle") : styles.push("square");
+    // !numOfClicks && styles.push("illumination");
+    transition && styles.push("transition");
+    styles = styles.join(" ");
+    return styles;
+  };
+
   return (
     <div className="scene" ref={sceneRef}>
       <div className="composition-wrapper">
         <div
-          className="interactive-area"
+          className={getInteractiveAreaStyles()}
           ref={interactiveArea}
           onClick={e => handleClick(e)}
+          onTransitionEnd={e => {
+            console.log(e.propertyName);
+            // setTransition(!(e.propertyName === "box-shadow"));
+            setTransition(false);
+          }}
         />
         {effects.length && effects}
       </div>
-      <div className="square-option" />
-      <div className="circle-option" />
+      <div
+        className="square-option"
+        onClick={() => {
+          incircle && setTransition(true);
+          setIncircle(false);
+        }}
+      />
+      <div
+        className="circle-option"
+        onClick={() => {
+          !incircle && setTransition(true);
+          setIncircle(true);
+        }}
+      />
       <ControlPanel depth={depth} updateDepth={updateDepth} />
     </div>
   );
