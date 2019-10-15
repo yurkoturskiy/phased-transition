@@ -22,6 +22,11 @@
   background: white;
 }
 
+.square-button.active,
+.circle-button.active {
+  background-color: red;
+}
+
 .square-button {
   left: -11%;
   width: 9%;
