@@ -1,11 +1,11 @@
 import React from "react";
 
-function SquareButton({ incircle, setTransition, setIncircle }) {
+function SquareButton({ incircle, setIncircle, transition, setTransition }) {
   return (
     <div
       className={incircle ? "square-button" : "square-button active"}
       onClick={() => {
-        incircle && setTransition(true);
+        !transition && setTransition(true);
         setIncircle(false);
       }}
     />

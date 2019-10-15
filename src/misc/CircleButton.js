@@ -1,11 +1,11 @@
 import React from "react";
 
-function CircleButton({ incircle, setTransition, setIncircle }) {
+function CircleButton({ incircle, setIncircle, transition, setTransition }) {
   return (
     <div
       className={incircle ? "circle-button active" : "circle-button"}
       onClick={() => {
-        !incircle && setTransition(true);
+        !transition && setTransition(true);
         setIncircle(true);
       }}
     />

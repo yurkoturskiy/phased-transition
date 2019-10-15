@@ -114,13 +114,15 @@ function Scene(props) {
       </div>
       <SquareButton
         incircle={incircle}
-        setTransition={setTransition}
         setIncircle={setIncircle}
+        transition={transition}
+        setTransition={setTransition}
       />
       <CircleButton
         incircle={incircle}
-        setTransition={setTransition}
         setIncircle={setIncircle}
+        transition={transition}
+        setTransition={setTransition}
       />
       <ControlPanel depth={depth} updateDepth={updateDepth} />
     </div>
