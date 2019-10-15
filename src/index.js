@@ -5,7 +5,7 @@ import GitHubLogo from "./misc/GitHubLogo";
 import Caption from "./misc/Caption";
 import Scene from "./Scene";
 
-import "./styles.css";
+import "./styles/index.css";
 import "@material/react-button/dist/button.css";
 
 function App() {
