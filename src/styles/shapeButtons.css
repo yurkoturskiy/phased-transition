@@ -1,0 +1,22 @@
+.square-button,
+.circle-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0 auto 0;
+  border: 1px solid white;
+  color: white;
+}
+.square-button {
+  left: -8vh;
+  width: 6vh;
+  height: 6vh;
+  transform: translate(-50%);
+}
+.circle-button {
+  right: -8vh;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 9vh;
+  transform: translate(50%);
+}

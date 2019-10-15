@@ -6,6 +6,8 @@ import Caption from "./misc/Caption";
 import Scene from "./Scene";
 
 import "./styles/index.css";
+import "./styles/adaptation.css";
+import "./styles/shapeButtons.css";
 import "@material/react-button/dist/button.css";
 
 function App() {

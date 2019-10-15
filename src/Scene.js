@@ -112,14 +112,14 @@ function Scene(props) {
         {effects.length && effects}
       </div>
       <div
-        className="square-option"
+        className="square-button"
         onClick={() => {
           incircle && setTransition(true);
           setIncircle(false);
         }}
       />
       <div
-        className="circle-option"
+        className="circle-button"
         onClick={() => {
           !incircle && setTransition(true);
           setIncircle(true);
