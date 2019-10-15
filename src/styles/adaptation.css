@@ -11,17 +11,6 @@
     left: 16vw;
     /* outline: 1px solid red; */
   }
-  .square-option {
-    left: -8vw;
-    width: 6vw;
-    height: 6vw;
-  }
-  .circle-option {
-    right: -8vw;
-    width: 7vw;
-    height: 7vw;
-    border-radius: 9vw;
-  }
   .interactive-area {
     height: 68vw;
     width: 68vw;

@@ -7,16 +7,35 @@
   border: 1px solid white;
   color: white;
 }
+.circle-button::before,
+.square-button::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 25%;
+  height: 25%;
+  background: white;
+}
+
 .square-button {
-  left: -8vh;
-  width: 6vh;
-  height: 6vh;
+  left: -11%;
+  width: 9%;
+  height: 9%;
   transform: translate(-50%);
 }
+
 .circle-button {
-  right: -8vh;
-  width: 7vh;
-  height: 7vh;
-  border-radius: 9vh;
+  right: -11%;
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
   transform: translate(50%);
+}
+.circle-button::before {
+  border-radius: 50%;
 }

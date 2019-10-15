@@ -3,7 +3,8 @@ import { morphing, spacing } from "primitivo-svg";
 // Local components
 import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
-import useDebounce from "./misc/useDebounce";
+import SquareButton from "./misc/SquareButton";
+import CircleButton from "./misc/CircleButton";
 
 function Scene(props) {
   const [effectsData, setEffectsData] = useState([]);
@@ -111,19 +112,15 @@ function Scene(props) {
         />
         {effects.length && effects}
       </div>
-      <div
-        className="square-button"
-        onClick={() => {
-          incircle && setTransition(true);
-          setIncircle(false);
-        }}
+      <SquareButton
+        incircle={incircle}
+        setTransition={setTransition}
+        setIncircle={setIncircle}
       />
-      <div
-        className="circle-button"
-        onClick={() => {
-          !incircle && setTransition(true);
-          setIncircle(true);
-        }}
+      <CircleButton
+        incircle={incircle}
+        setTransition={setTransition}
+        setIncircle={setIncircle}
       />
       <ControlPanel depth={depth} updateDepth={updateDepth} />
     </div>
