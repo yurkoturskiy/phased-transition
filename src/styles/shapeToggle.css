@@ -2,17 +2,21 @@
 .circle-button {
   position: absolute;
   z-index: 2;
-  bottom: -4%;
+  bottom: 6%;
   left: 0;
-  margin: auto 0 auto 0;
-  border: 1px solid white;
+  right: 0;
+  margin: 0 auto 0 auto;
+  /* border: 1px solid white; */
   color: white;
-  width: 6%;
-  height: 6%;
-  transform: translate(0, 100%);
-  transition: border-radius 0.3s;
+  background: black;
+  box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 0.2),
+    0px 0px 4px 0px rgba(255, 255, 255, 0.2);
+  width: 8%;
+  height: 8%;
+  /* transform: translate(0, 100%); */
+  transition: border-radius 0.5s;
 }
-.circle-button::before,
+/* .circle-button::before,
 .square-button::before {
   content: "";
   display: inline-block;
@@ -25,17 +29,18 @@
   width: 25%;
   height: 25%;
   background: white;
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 1);
   transition: border-radius 0.3s;
-}
+} */
 
-.square-button.active,
-.circle-button.active {
-  background-color: red;
+.square-button,
+.square-button::before {
+  border-radius: 8%;
 }
 
 .circle-button {
   border-radius: 50%;
 }
-.circle-button::before {
+/* .circle-button::before {
   border-radius: 50%;
-}
+} */
