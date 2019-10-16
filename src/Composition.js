@@ -11,8 +11,6 @@ function Composition(props) {
     keySplines: "0.75, 0, 0.25, 1"
   });
 
-  // const endShape = path({ ...baseParameters, groups: endGroupsParameters });
-
   const [endPathIsActive, setEndPathIsActive] = useState(false);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ function Composition(props) {
       <path
         id="transition-stroke-one"
         className="transition-path"
-        // d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="2"
       >
         <animate
@@ -44,7 +41,6 @@ function Composition(props) {
       <path
         id="transition-stroke-two"
         className="transition-path"
-        // d={endPathIsActive ? endShape.d : undefined}
         strokeWidth="2"
       >
         <animate
