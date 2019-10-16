@@ -19,7 +19,7 @@ function Composition(props) {
       <path
         id="transition-stroke-one"
         className="transition-path"
-        strokeWidth="2"
+        strokeWidth="1.4"
       >
         <animate
           calcMode="spline"
@@ -34,7 +34,7 @@ function Composition(props) {
       <path
         id="transition-stroke-two"
         className="transition-path"
-        strokeWidth="2"
+        strokeWidth="1.4"
       >
         <animate
           calcMode="spline"
@@ -51,7 +51,7 @@ function Composition(props) {
       <path
         id="transition-stroke-three"
         className="transition-path"
-        strokeWidth="2"
+        strokeWidth="1.4"
       >
         <animate
           calcMode="spline"

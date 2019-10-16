@@ -3,34 +3,6 @@
   .App {
     height: 100vw;
     width: 100vw;
-    /* outline: 1px solid pink; */
-  }
-
-  .scene {
-    top: 14vw;
-    left: 16vw;
-    /* outline: 1px solid red; */
-  }
-  .interactive-area {
-    height: 68vw;
-    width: 68vw;
-  }
-  .composition-wrapper {
-    height: 68vw;
-    width: 68vw;
-  }
-  .composition {
-    height: 68vw;
-  }
-
-  #github-logo {
-    bottom: 4vw;
-    left: 84vw;
-  }
-
-  #caption {
-    left: 16vw;
-    bottom: 4vw;
   }
 }
 
@@ -43,9 +15,6 @@
     width: 36px;
     transform: translate(-100%, 28%);
   }
-  #depth {
-    font-size: 0.8rem;
-  }
 }
 
 @media only screen and (max-height: 480px), (max-width: 480px) {
@@ -55,8 +24,5 @@
   #github-logo {
     width: 32px;
     transform: translate(-100%, 28%);
-  }
-  #depth {
-    font-size: 0.6rem;
   }
 }

@@ -1,0 +1,36 @@
+#caption {
+  position: absolute;
+  left: 17%;
+  bottom: 4%;
+}
+h1 {
+  font-size: 1.2rem;
+  line-height: 0;
+  color: white;
+}
+.primitivo {
+  font-weight: 700;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#codesandbox-logo {
+  position: absolute;
+  width: 3.6%;
+  min-width: 20px;
+  bottom: 4%;
+  right: 17%;
+  color: white;
+  /* border: 1px solid red; */
+  /* transform: translate(0, 50%); */
+}
+
+#github-logo {
+  position: absolute;
+  width: 48px;
+  bottom: 4%;
+  left: 84%;
+  transform: translate(-100%, 6%);
+}

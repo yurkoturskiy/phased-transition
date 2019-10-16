@@ -26,8 +26,10 @@ body {
 
 .scene {
   position: absolute;
-  top: 14vh;
-  left: 16vh;
+  top: 14%;
+  left: 16%;
+  height: 68%;
+  width: 68%;
   /* outline: 1px solid red; */
 }
 
@@ -39,8 +41,8 @@ body {
   box-shadow: 0px 0px 96px 9px rgba(255, 255, 255, 0.1),
     0px 0px 20px -10px rgba(255, 255, 255, 0.3);
   opacity: 1;
-  height: 68vh;
-  width: 68vh;
+  height: 100%;
+  width: 100%;
 
   animation-name: light-up;
   animation-duration: 3.6s;
@@ -52,9 +54,6 @@ body {
 }
 .circle {
   border-radius: 100%;
-}
-
-.illumination {
 }
 
 .transition {
@@ -86,46 +85,18 @@ body {
   }
 }
 
-/* Control panel styles */
-.control-panel {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* outline: 1px solid red; */
-  bottom: -32px;
-  left: 0;
-  right: 0;
-  margin: 0 auto 0 auto;
-  user-select: none;
-}
-#depth {
-  display: inline;
-  color: rgb(255, 255, 255);
-  font-weight: 300;
-  font-size: 0.8rem;
-  margin-left: 8px;
-  margin-right: 8px;
-  user-select: text;
-  /* outline: 1px solid red; */
-}
-
-.control-panel label {
-  color: white;
-}
-
 /* Composition styles */
 .composition-wrapper {
   position: relative;
-  height: 68vh;
-  width: 68vh;
+  height: 100%;
+  width: 100%;
 }
 .composition {
   position: absolute;
   transition: border-radius 0.5s;
   top: 0;
   left: 0;
-  height: 68vh;
+  height: 100%;
   user-select: none;
 }
 .transition-path {
@@ -147,32 +118,4 @@ body {
   to {
     opacity: 0;
   }
-}
-
-/* Caption styles */
-#github-logo {
-  position: absolute;
-  bottom: 4vh;
-  width: 48px;
-  left: 84vh;
-  transform: translate(-100%, 6%);
-}
-h1 {
-  font-size: 1.2rem;
-  line-height: 0;
-  color: white;
-}
-.primitivo {
-  font-weight: 700;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-#caption {
-  position: absolute;
-  left: 16vh;
-  bottom: 4vh;
 }

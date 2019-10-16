@@ -1,10 +1,8 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { morphing, spacing } from "primitivo-svg";
 // Local components
-import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
 import ShapeToggle from "./misc/ShapeToggle";
-import FactorButtons from "./misc/FactorButtons";
 
 function Scene(props) {
   const [effectsData, setEffectsData] = useState([]);
@@ -20,7 +18,7 @@ function Scene(props) {
     window.addEventListener("resize", resizeHandler);
     return () => window.removeEventListener("resize", resizeHandler);
   }, []);
-  const [incircle, setIncircle] = useState(false);
+  const [incircle, setIncircle] = useState(true);
   const [transition, setTransition] = useState(false);
   const [depth, setDepth] = useState(0);
   const [numOfSegments, setNumOfSegments] = useState(4);
@@ -53,7 +51,7 @@ function Scene(props) {
     data.active = true;
     data.incircle = incircle;
     data.numOfGroups = numOfGroups;
-    data.numOfSegments = numOfSegments;
+    data.numOfSegments = incircle ? 3 : 4;
     setEffectsData(effectsData => {
       effectsData.push(data);
       data.index = effectsData.length - 1;
@@ -119,7 +117,6 @@ function Scene(props) {
         transition={transition}
         setTransition={setTransition}
       />
-      <FactorButtons numOfButtons={3} />
     </div>
   );
 }
