@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import GitHubLogo from "./misc/GitHubLogo";
 import CodeSandboxLogo from "./misc/CodeSandboxLogo";
 import Caption from "./misc/Caption";
 import Scene from "./Scene";
