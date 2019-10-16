@@ -4,6 +4,7 @@ import { morphing, spacing } from "primitivo-svg";
 import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
 import ShapeToggle from "./misc/ShapeToggle";
+import FactorButtons from "./misc/FactorButtons";
 
 function Scene(props) {
   const [effectsData, setEffectsData] = useState([]);
@@ -108,11 +109,7 @@ function Scene(props) {
           className={getInteractiveAreaStyles()}
           ref={interactiveArea}
           onClick={e => handleClick(e)}
-          onTransitionEnd={e => {
-            console.log(e.propertyName);
-            // setTransition(!(e.propertyName === "box-shadow"));
-            setTransition(false);
-          }}
+          onTransitionEnd={e => setTransition(false)}
         />
         {effects.length && effects}
       </div>
@@ -122,7 +119,7 @@ function Scene(props) {
         transition={transition}
         setTransition={setTransition}
       />
-      <ControlPanel depth={depth} updateDepth={updateDepth} />
+      <FactorButtons numOfButtons={3} />
     </div>
   );
 }

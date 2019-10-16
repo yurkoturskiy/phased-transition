@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { spacing } from "primitivo-svg";
 import usePhasedTransition from "./usePhasedTransition";

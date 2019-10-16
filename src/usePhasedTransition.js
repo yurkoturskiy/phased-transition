@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { morphing, spacing, path, phases, randomRange } from "primitivo-svg";
+import React, { useMemo } from "react";
+import { phases, randomRange } from "primitivo-svg";
 
 function usePhasedTransition(props) {
   const phaseOneRatio = 3;
