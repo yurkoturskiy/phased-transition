@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@material/react-button";
+import ShapeToggle from "./misc/ShapeToggle";
 
 function ControlPanel({ depth, updateDepth }) {
   return (

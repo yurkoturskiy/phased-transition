@@ -7,7 +7,7 @@ import Scene from "./Scene";
 
 import "./styles/index.css";
 import "./styles/adaptation.css";
-import "./styles/shapeButtons.css";
+import "./styles/shapeToggle.css";
 import "@material/react-button/dist/button.css";
 
 function App() {

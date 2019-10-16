@@ -3,8 +3,7 @@ import { morphing, spacing } from "primitivo-svg";
 // Local components
 import ControlPanel from "./ControlPanel";
 import Composition from "./Composition";
-import SquareButton from "./misc/SquareButton";
-import CircleButton from "./misc/CircleButton";
+import ShapeToggle from "./misc/ShapeToggle";
 
 function Scene(props) {
   const [effectsData, setEffectsData] = useState([]);
@@ -23,6 +22,8 @@ function Scene(props) {
   const [incircle, setIncircle] = useState(false);
   const [transition, setTransition] = useState(false);
   const [depth, setDepth] = useState(0);
+  const [numOfSegments, setNumOfSegments] = useState(4);
+  const [numOfGroups, setNumOfGroups] = useState(2);
   const [centerX, setCenterX] = useState(100);
   const [centerY, setCenterY] = useState(100);
   const [numOfClicks, setNumOfClicks] = useState(0);
@@ -49,6 +50,9 @@ function Scene(props) {
     data.centerY = clickY;
     data.depth = depth;
     data.active = true;
+    data.incircle = incircle;
+    data.numOfGroups = numOfGroups;
+    data.numOfSegments = numOfSegments;
     setEffectsData(effectsData => {
       effectsData.push(data);
       data.index = effectsData.length - 1;
@@ -77,9 +81,9 @@ function Scene(props) {
           compositionHeight={compositionSize}
           width={compositionSize}
           height={compositionSize}
-          incircle={incircle}
-          numOfGroups={2}
-          numOfSegments={4}
+          incircle={data.incircle}
+          numOfGroups={data.numOfGroups}
+          numOfSegments={data.numOfSegments}
           className={incircle ? "composition circle" : "composition"}
         />
       );
@@ -112,13 +116,7 @@ function Scene(props) {
         />
         {effects.length && effects}
       </div>
-      <SquareButton
-        incircle={incircle}
-        setIncircle={setIncircle}
-        transition={transition}
-        setTransition={setTransition}
-      />
-      <CircleButton
+      <ShapeToggle
         incircle={incircle}
         setIncircle={setIncircle}
         transition={transition}
