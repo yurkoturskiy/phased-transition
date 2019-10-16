@@ -1,21 +1,14 @@
 import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
-import { morphing, spacing, path, phases, randomRange } from "primitivo-svg";
+import { spacing } from "primitivo-svg";
 import usePhasedTransition from "./usePhasedTransition";
 
 function Composition(props) {
   const phasesOutput = usePhasedTransition(props);
-
   const ts = spacing({
     progression: phasesOutput.progressions,
     keySplines: "0.75, 0, 0.25, 1"
   });
-
-  const [endPathIsActive, setEndPathIsActive] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setEndPathIsActive(true), 1400);
-  }, []);
 
   return (
     <svg
