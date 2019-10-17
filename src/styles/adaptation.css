@@ -6,7 +6,7 @@
   }
 }
 
-@media only screen and (max-height: 640px), (max-width: 640px) {
+@media only screen and (max-height: 500px), (max-width: 500px) {
   .scene {
     top: 11%;
     left: 13%;
