@@ -1,11 +1,22 @@
-#caption {
+.footer {
   position: absolute;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   left: 17%;
   bottom: 4%;
+  width: 65%;
+  /* outline: 1px solid pink; */
+}
+
+#caption {
+  /* position: absolute; */
+  margin-left: 1.6%;
 }
 h1 {
-  font-size: 1.2rem;
-  line-height: 0;
+  font-size: 1rem;
   color: white;
 }
 .primitivo {
@@ -17,20 +28,27 @@ a {
 }
 
 #codesandbox-logo {
-  position: absolute;
-  width: 3.6%;
-  min-width: 20px;
-  bottom: 4%;
-  right: 17%;
-  color: white;
-  /* border: 1px solid red; */
+  /* position: absolute; */
+  height: 32px;
+  margin-top: 10%;
+  /* min-height: 20px; */
+  color: #2b2b2b;
+  /* outline: 1px solid red; */
   /* transform: translate(0, 50%); */
+  transition: color 0.3s;
+}
+
+#codesandbox-logo:hover {
+  color: white;
+}
+
+#github-link {
+  margin-left: auto;
 }
 
 #github-logo {
-  position: absolute;
+  /* outline: 1px solid red; */
+  margin: 0;
+  padding: 0;
   width: 48px;
-  bottom: 4%;
-  left: 84%;
-  transform: translate(-100%, 6%);
 }

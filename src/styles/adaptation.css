@@ -6,6 +6,21 @@
   }
 }
 
+@media only screen and (max-height: 640px), (max-width: 640px) {
+  .scene {
+    top: 11%;
+    left: 13%;
+    height: 74%;
+    width: 74%;
+    /* outline: 1px solid red; */
+  }
+  .footer {
+    left: 15%;
+    bottom: 0;
+    width: 69%;
+  }
+}
+
 @media only screen and (max-height: 820px) and (min-height: 480px),
   (max-width: 590px) and (min-width: 480px) {
   h1 {
@@ -13,7 +28,10 @@
   }
   #github-logo {
     width: 36px;
-    transform: translate(-100%, 28%);
+    /* transform: translate(-100%, 28%); */
+  }
+  #codesandbox-logo {
+    height: 28px;
   }
 }
 
@@ -22,7 +40,10 @@
     font-size: 0.6rem;
   }
   #github-logo {
-    width: 32px;
-    transform: translate(-100%, 28%);
+    width: 30px;
+    transform: translate(0, 10%);
+  }
+  #codesandbox-logo {
+    height: 20px;
   }
 }

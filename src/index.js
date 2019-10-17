@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import CodeSandboxLogo from "./misc/CodeSandboxLogo";
-import Caption from "./misc/Caption";
 import Scene from "./Scene";
+import Footer from "./Footer";
 
 import "./styles/index.css";
 import "./styles/shapeToggle.css";
@@ -15,10 +14,7 @@ function App() {
   return (
     <div className="App">
       <Scene />
-      <a href="https://codesandbox.io/s/github/guandjoy/phased-transition">
-        <CodeSandboxLogo />
-      </a>
-      <Caption topic="Phased transition" />
+      <Footer />
     </div>
   );
 }

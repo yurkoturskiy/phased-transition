@@ -6,16 +6,14 @@ import ShapeToggle from "./misc/ShapeToggle";
 
 function Scene(props) {
   const [effectsData, setEffectsData] = useState([]);
-  const [compositionSize, setCompositionSize] = useState(
-    (Math.min(window.innerHeight, window.innerWidth) / 100) * 68
-  );
+  const [compositionSize, setCompositionSize] = useState(10);
   const resizeHandler = () => {
-    setCompositionSize(
-      (Math.min(window.innerHeight, window.innerWidth) / 100) * 68
-    );
+    setCompositionSize(sceneRef.current.offsetWidth);
   };
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
+    console.log("scene ref", sceneRef);
+    setCompositionSize(sceneRef.current.offsetWidth);
     return () => window.removeEventListener("resize", resizeHandler);
   }, []);
   const [incircle, setIncircle] = useState(true);
