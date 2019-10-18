@@ -46,7 +46,7 @@ body {
 
   animation-name: light-up;
   animation-duration: 3.6s;
-  animation-delay: 0.7s;
+  animation-delay: 0.5s;
 }
 
 .square {
