@@ -58,14 +58,14 @@ function usePhasedTransition(props) {
   // Phase one //
   ///////////////
 
-  var progressionsPhaseScope = params => {
+  const phaseOneProgressionsPhaseScope = params => {
     let numOfVertexes = params.endPath.vertexes.length;
     let progressions = Array(numOfVertexes);
     progressions.fill(1, 0, numOfVertexes);
     return progressions;
   };
 
-  var progressionsGeneralScope = params => {
+  const phaseOneProgressionsGeneralScope = params => {
     let numOfVertexes = params.endPath.vertexes.length;
     let progressions = Array(numOfVertexes);
     progressions.fill(params.duration, 0, numOfVertexes);
@@ -85,7 +85,7 @@ function usePhasedTransition(props) {
     return maxLength * progression;
   };
 
-  const getPhaseOneGroupsParameters = () => {
+  const phaseOneGroupsParameters = () => {
     let groups = [];
     for (let i = 0; i < props.numOfGroups - 1; i++) {
       groups.push({
@@ -110,20 +110,20 @@ function usePhasedTransition(props) {
 
   const phaseOne = {
     duration: phaseOneDuration,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: getPhaseOneGroupsParameters()
+    progressionsPhaseScope: phaseOneProgressionsPhaseScope,
+    progressionsGeneralScope: phaseOneProgressionsGeneralScope,
+    groupsParameters: phaseOneGroupsParameters()
   };
 
   ///////////////
   // Phase two //
   ///////////////
 
-  var duration = ({ prevDurations }) => {
+  const phaseTwoDuration = ({ prevDurations }) => {
     return 0.5 - prevDurations[0];
   };
 
-  var progressionsPhaseScope = params => {
+  const phaseTwoProgressionsPhaseScope = params => {
     let progressions = [];
     const { endPath, duration } = params;
     params.endPath.vertexes.forEach((vertex, index) => {
@@ -134,7 +134,7 @@ function usePhasedTransition(props) {
     return progressions;
   };
 
-  var progressionsGeneralScope = params => {
+  const phaseTwoProgressionsGeneralScope = params => {
     const { duration, endPath, prevPhaseProgressions } = params;
     let progressions = [];
     params.endPath.vertexes.forEach((vertex, index) => {
@@ -145,7 +145,7 @@ function usePhasedTransition(props) {
     return progressions;
   };
 
-  var radiusFirstGroup = ({
+  const phaseTwoRadiusFirstGroup = ({
     progression,
     endPath,
     vertex,
@@ -162,7 +162,7 @@ function usePhasedTransition(props) {
     return result;
   };
 
-  var radiusSecondGroup = ({
+  const phaseTwoRadiusSecondGroup = ({
     progression,
     endPath,
     vertex,
@@ -179,13 +179,13 @@ function usePhasedTransition(props) {
     return result / 2;
   };
 
-  const getPhaseTwoGroupsParameters = () => {
+  const phaseTwoGroupsParameters = () => {
     let groups = [];
     for (let i = 0; i < props.numOfGroups - 1; i++) {
       groups.push({
         incircle: () => props.incircle,
         type: () => (props.incircle ? "radial" : "linear"),
-        radius: radiusFirstGroup,
+        radius: phaseTwoRadiusFirstGroup,
         adaptArms: () => true,
         round: () => 1,
         lengthBasedRound: () => true
@@ -194,7 +194,7 @@ function usePhasedTransition(props) {
     groups.push({
       incircle: () => props.incircle,
       type: () => (props.incircle ? "radial" : "linear"),
-      radius: radiusSecondGroup,
+      radius: phaseTwoRadiusSecondGroup,
       adaptArms: () => false,
       round: () => 1,
       lengthBasedRound: () => true
@@ -203,17 +203,17 @@ function usePhasedTransition(props) {
   };
 
   const phaseTwo = {
-    duration,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: getPhaseTwoGroupsParameters()
+    duration: phaseTwoDuration,
+    progressionsPhaseScope: phaseTwoProgressionsPhaseScope,
+    progressionsGeneralScope: phaseTwoProgressionsGeneralScope,
+    groupsParameters: phaseTwoGroupsParameters()
   };
 
   /////////////////
   // Phase three //
   /////////////////
 
-  var progressionsPhaseScope = params => {
+  const phaseThreeProgressionsPhaseScope = params => {
     let progressions = [];
     const { endPath, duration } = params;
     const { vertexes } = endPath;
@@ -245,7 +245,7 @@ function usePhasedTransition(props) {
     return progressions;
   };
 
-  var progressionsGeneralScope = params => {
+  const phaseThreeProgressionsGeneralScope = params => {
     const { duration, endPath, prevPhaseProgressions } = params;
     const { vertexes } = endPath;
     const maxLength = endPath.parameters.maxLengthByGroup[1];
@@ -278,7 +278,7 @@ function usePhasedTransition(props) {
     return progressions;
   };
 
-  var roundFirstGroup = ({
+  const phaseThreeRoundFirstGroup = ({
     progression,
     endPath,
     vertex,
@@ -315,7 +315,7 @@ function usePhasedTransition(props) {
     return result;
   };
 
-  var radiusSecondGroup = ({
+  const phaseThreeRadiusSecondGroup = ({
     progression,
     endPath,
     vertex,
@@ -331,7 +331,7 @@ function usePhasedTransition(props) {
     return result;
   };
 
-  const getPhaseThreeGroupsParameters = () => {
+  const phaseThreeGroupsParameters = () => {
     let groups = [];
     for (let i = 0; i < props.numOfGroups - 1; i++) {
       groups.push({
@@ -339,14 +339,14 @@ function usePhasedTransition(props) {
         type: () => (props.incircle ? "radial" : "linear"),
         radius: ({ vertex }) => vertex.length,
         adaptArms: () => !props.incircle,
-        round: roundFirstGroup,
+        round: phaseThreeRoundFirstGroup,
         lengthBasedRound: () => true
       });
     }
     groups.push({
       incircle: () => props.incircle,
       type: () => (props.incircle ? "radial" : "linear"),
-      radius: radiusSecondGroup,
+      radius: phaseThreeRadiusSecondGroup,
       adaptArms: () => false,
       round: () => 1,
       lengthBasedRound: () => true
@@ -356,9 +356,9 @@ function usePhasedTransition(props) {
 
   const phaseThree = {
     duration: () => 0.5,
-    progressionsPhaseScope,
-    progressionsGeneralScope,
-    groupsParameters: getPhaseThreeGroupsParameters()
+    progressionsPhaseScope: phaseThreeProgressionsPhaseScope,
+    progressionsGeneralScope: phaseThreeProgressionsGeneralScope,
+    groupsParameters: phaseThreeGroupsParameters()
   };
   const rotate = useMemo(() => (props.incircle ? randomRange(0, 90) : 45), [
     props.incircle
