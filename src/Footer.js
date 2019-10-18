@@ -10,7 +10,12 @@ function Footer(props) {
         <CodeSandboxLogo />
       </a>
       <Caption topic="Phased transition" />
-      <a href="https://github.com/guandjoy/phased-transition" id="github-link">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/guandjoy/phased-transition"
+        id="github-link"
+      >
         <GitHubLogo />
       </a>
     </div>
